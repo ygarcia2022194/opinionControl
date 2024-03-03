@@ -1,27 +1,30 @@
-import {response, request} from "express";
+import { response, request } from "express";
 import bcryptjs from 'bcryptjs';
-import User from './user.js';
+import User from './user.model.js';
 
-export const userPost = async (req, res)=>{
+
+export const usuariosPost = async (req, res) => {
+
+
     const {nombre, correo, username,password} = req.body;
-    const user = new User( {nombre, correo, username,password} );
+    const usuario = new User( {nombre, correo, username,password} );
 
     const salt = bcryptjs.genSaltSync(); 
     usuario.password = bcryptjs.hashSync(password, salt);
 
 
-    await user.save();
+    await usuario.save();
 
     res.status(200).json({
-        user
+        usuario
     });
 }
 
-export const userGet = async (req = request, res = response)=>{
+export const usuariosGet = async (req = request, res = response) => {
     const {limite, desde} = req.query;
     const query = {estado: true};
 
-    const [total, user] = await Promise.all([
+    const [total, usuarios] = await Promise.all([
         User.countDocuments(query),
         User.find(query)
         .skip(Number(desde))
@@ -30,51 +33,47 @@ export const userGet = async (req = request, res = response)=>{
 
     res.status(200).json({
         total,
-        user
+        usuarios
     });
 }
 
-export const userPut = async(req, res= response)=>{
-    const {id} = req.params;
-    const {_id, correo, oldPassword, ...resto} = req.body;
-    const autenticUser = req.user;
+export const usuariosPut = async (req, res = response) => {
+    const { id } = req.params;
+    const {_id, correo, passwordAnterior, ...resto} = req.body;
+    const usuarioAutenticado = req.usuario; // Asumiendo que el usuario autenticado está disponible en req.usuario
 
     try {
-        const user = await User.findById(id);
+        const usuario = await User.findById(id);
 
-        if(!user){
-            return res.status(404).json({
-                msg: 'the user don´t exist'
-            })
-        }
-        if (autenticUser._id.toString() !== user._id.toString()) {
-            return res.status(403).json({ 
-                msg: 'You don´t have access to update this user' 
-            });
+        if (!usuario) {
+            return res.status(404).json({ msg: 'the user don´t exist' });
         }
 
-        const validPassword = await bcryptjs.compare(oldPassword, user.password);
+        if (usuarioAutenticado._id.toString() !== usuario._id.toString()) {
+            return res.status(403).json({ msg: 'You don´t have access to update this user' });
+        }
 
-        if(!validPassword){
-            return res.status(401).json({ 
-                msg: "Incorrect old password" 
-            });
+        const passwordValida = await bcryptjs.compare(passwordAnterior, usuario.password);
+
+        if(!passwordValida){
+            return res.status(401).json({ msg: "Incorrect old password" });
         }
 
         if(resto.password){
             const salt = bcryptjs.genSaltSync();
             resto.password = bcryptjs.hashSync(resto.password, salt);
         }
+
         await User.findByIdAndUpdate(id, resto);
 
-        const UpdateUser = await User.findById(id);
+        const usuarioActualizado = await User.findById(id);
 
         res.status(200).json({
             msg: 'User Update',
-            user: UpdateUser
+            usuario: usuarioActualizado
         });
-    } catch (error){
-        console.error('ERROR to update user', error);
-        res.status(500).json({error: 'ERROR to update user'});
+    } catch (error) {
+        console.error('ERROR to update user:', error);
+        res.status(500).json({ error: 'ERROR to update user' });
     }
 }
