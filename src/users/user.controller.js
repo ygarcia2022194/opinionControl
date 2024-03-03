@@ -1,6 +1,6 @@
 import { response, request } from "express";
 import bcryptjs from 'bcryptjs';
-import User from './user.model.js';
+import User from './user.js';
 
 
 export const usuariosPost = async (req, res) => {
@@ -40,7 +40,7 @@ export const usuariosGet = async (req = request, res = response) => {
 export const usuariosPut = async (req, res = response) => {
     const { id } = req.params;
     const {_id, correo, passwordAnterior, ...resto} = req.body;
-    const usuarioAutenticado = req.usuario; // Asumiendo que el usuario autenticado está disponible en req.usuario
+    const usuarioAutenticado = req.usuario;
 
     try {
         const usuario = await User.findById(id);
