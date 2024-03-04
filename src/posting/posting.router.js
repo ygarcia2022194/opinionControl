@@ -12,6 +12,7 @@ publicationsDelete
 import { existPostById } from "../helpers/db-validators.js"
 
 import { validateFields } from "../middlewares/validate-fields.js"
+import { validarJWT } from "../middlewares/validate-jwt.js";
 
 
 const router = Router();
@@ -19,6 +20,7 @@ const router = Router();
 router.post(
     "/add",
     [
+        validarJWT,
         check("titulo", "The title is obligatory").not().isEmpty(),
         check("categoria", "The category is obligatory").not().isEmpty(),
         check("texto", "The principal text is obligatory").not().isEmpty(),
@@ -30,6 +32,7 @@ router.get("/", publicationsGet);
 router.put(
     "/:id",
     [
+        validarJWT,
         check("titulo", "The title is obligatory").not().isEmpty(),
         check("categoria", "The category is obligatory").not().isEmpty(),
         check("texto", "The principal text is obligatory").not().isEmpty(),
@@ -40,6 +43,7 @@ router.put(
 
 router.delete(
     "/:id",
+    validarJWT,
     publicationsDelete
 );
 

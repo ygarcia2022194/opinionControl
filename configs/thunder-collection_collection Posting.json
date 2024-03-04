@@ -1,0 +1,90 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "collection Posting",
+    "dateExported": "2024-03-04T00:53:50.598Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "70c308ba-fde7-4795-83b2-f363f709d532",
+            "colId": "35119fa3-d14b-4db1-9b90-1162ce4f4829",
+            "containerId": "",
+            "name": "postingPost",
+            "url": "http://localhost:8080/opinionControl/v1/posting/add",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-03T22:58:55.948Z",
+            "modified": "2024-03-04T00:49:31.916Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU1MDdjYTY5NDIxNGNjYjY5OWE1NjkiLCJpYXQiOjE3MDk1MTI1ODksImV4cCI6MTcwOTUxNjE4OX0.m8fOnpcvLf8zQUN74fxezz3ZR4plXS5AenUFvYSc4bk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"titulo\": \"Viaje a miami\",\n  \"categoria\": \"Tour\",\n  \"texto\": \"Y la vi llorar, mientras lloraba\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "75490646-78f7-487f-a99b-af1274e4ef42",
+            "colId": "35119fa3-d14b-4db1-9b90-1162ce4f4829",
+            "containerId": "",
+            "name": "postingGet",
+            "url": "http://localhost:8080/opinionControl/v1/posting",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-03T23:09:12.709Z",
+            "modified": "2024-03-03T23:09:23.835Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d0f0805b-ece1-4902-9326-99b596f9177d",
+            "colId": "35119fa3-d14b-4db1-9b90-1162ce4f4829",
+            "containerId": "",
+            "name": "postingPut",
+            "url": "http://localhost:8080/opinionControl/v1/posting/65e519ad094cc8c0a7faa3a8",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-03-03T23:10:41.073Z",
+            "modified": "2024-03-04T00:47:45.086Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU1MDdjYTY5NDIxNGNjYjY5OWE1NjkiLCJpYXQiOjE3MDk1MTI1ODksImV4cCI6MTcwOTUxNjE4OX0.m8fOnpcvLf8zQUN74fxezz3ZR4plXS5AenUFvYSc4bk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"titulo\": \"Mi viaje por miami\",\n  \"categoria\": \"WORLD\",\n  \"texto\": \"Este es mi primer viaje por miami\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "27f4ded7-8423-4a3d-a9cb-67c0d0e1211e",
+            "colId": "35119fa3-d14b-4db1-9b90-1162ce4f4829",
+            "containerId": "",
+            "name": "postinDelete",
+            "url": "http://localhost:8080/opinionControl/v1/posting/65e519ad094cc8c0a7faa3a8",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-03-03T23:14:29.598Z",
+            "modified": "2024-03-04T00:48:29.904Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU1MDdjYTY5NDIxNGNjYjY5OWE1NjkiLCJpYXQiOjE3MDk1MTI1ODksImV4cCI6MTcwOTUxNjE4OX0.m8fOnpcvLf8zQUN74fxezz3ZR4plXS5AenUFvYSc4bk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

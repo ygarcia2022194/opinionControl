@@ -14,7 +14,7 @@ import {
 } from "../helpers/db-validators.js";
 
 import { validateFields } from "../middlewares/validate-fields.js";
-
+import { validarJWT } from "../middlewares/validate-jwt.js";
 const router = Router();
 
 router.get("/", usuariosGet);
@@ -38,7 +38,7 @@ router.post(
 router.put(
   "/:id",
   [ 
-
+    validarJWT,
     check("id", "Not a valid ID").isMongoId(),
     check("id").custom(existUserById),
     validateFields,

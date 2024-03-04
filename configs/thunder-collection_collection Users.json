@@ -1,0 +1,66 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "collection Users",
+    "dateExported": "2024-03-04T00:53:59.997Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "c5f46216-1b68-444b-a39c-414c22b60657",
+            "colId": "7dba486a-ac67-4ccd-9cd3-18832c28cf77",
+            "containerId": "",
+            "name": "userPost",
+            "url": "http://localhost:8080/opinionControl/v1/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-03T22:00:36.186Z",
+            "modified": "2024-03-03T23:43:48.494Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"user4\",\n  \"correo\": \"user4@gmail.com\",\n  \"username\": \"user04\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "82dfa048-27b7-491c-ae1e-631db9009aa0",
+            "colId": "7dba486a-ac67-4ccd-9cd3-18832c28cf77",
+            "containerId": "",
+            "name": "usersGet",
+            "url": "http://localhost:8080/opinionControl/v1/users",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-03-03T22:37:19.838Z",
+            "modified": "2024-03-03T22:39:35.906Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e8df1a8c-effb-4300-8e77-b3f3d23b615e",
+            "colId": "7dba486a-ac67-4ccd-9cd3-18832c28cf77",
+            "containerId": "",
+            "name": "usersPut",
+            "url": "http://localhost:8080/opinionControl/v1/users/65e50b34dbaf6b3adf79686d",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-03-03T22:40:43.676Z",
+            "modified": "2024-03-04T00:43:22.760Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU1MDdjYTY5NDIxNGNjYjY5OWE1NjkiLCJpYXQiOjE3MDk1MTI1ODksImV4cCI6MTcwOTUxNjE4OX0.m8fOnpcvLf8zQUN74fxezz3ZR4plXS5AenUFvYSc4bk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"user4\",\n  \"correo\": \"user4@gmail.com\",\n  \"username\": \"user04\",\n  \"passwordAnterior\": \"123456\",\n  \"password\": \"255080\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
